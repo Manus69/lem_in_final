@@ -20,7 +20,7 @@ static void	initialize_stuff(t_colony *colony)
 	colony->current_flow = get_flow_paths(colony, 0);
 	if (!colony->current_flow)
 	{
-		write(1, ERROR_MSG, ft_strlen(ERROR_MSG));
+		write(2, ERROR_MSG, ft_strlen(ERROR_MSG));
 		exit(1);
 	}
 	initialize_the_flow_netowrk(colony, colony->current_flow);
@@ -107,7 +107,6 @@ int			main(int arg_count, char **arg_values)
 			free_for_all(&lemin);
 		return (err_out());
 	}
-	print_initial_text(lemin.initial_text);
 	colony = get_colony(lemin);
 	initialize_stuff(colony);
 	reset_paths(colony->current_flow);
@@ -119,6 +118,7 @@ int			main(int arg_count, char **arg_values)
 	refine_solution_via_pivots(colony);
 	reset_paths(colony->optimal_flow);
 	saturate_and_distribute_mk2(colony, colony->optimal_flow, &colony->m_p, 0);
+	print_initial_text(lemin.initial_text);
 	block_and_go(colony);
 	if (lemin.print_path)
 		display_all_paths(colony->optimal_flow);

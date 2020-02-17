@@ -17,7 +17,7 @@
 
 # include "generic_list.h"
 
-# define ERROR_MSG "ERROR"
+# define ERROR_MSG "ERROR\n"
 # define BIG_STRING_CAPACITY 10000000
 # define MOVE_DESCRIPTION_LENGTH 128
 
