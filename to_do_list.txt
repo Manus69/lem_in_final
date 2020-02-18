@@ -1,0 +1,1 @@
+make it so the word length is checked when the input is processed;
