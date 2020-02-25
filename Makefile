@@ -44,15 +44,14 @@ del_visual:
 	rm visu-hex
 	make fclean  -C ./visualization
 
-$(LIB_PRINT):.FORCE
+$(LIB_PRINT):.FORCE visual
 	make -C ./printf
 	make -C ./library_routines
 
 clean:
-	rm -f $(NAME)
 	rm -f ./will_it_work/*.o
 
-fclean: clean
+fclean: clean del_visual
 	make fclean -C ./printf
 	make fclean -C ./library_routines
 	rm -f lem-in
