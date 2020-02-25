@@ -3,3 +3,4 @@ discuss a defence strategy;
 unfuck makefile rules;
 //build the visualizer right away;
 go through memory usage once again;
+INVALID MAPS;
