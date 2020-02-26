@@ -20,9 +20,11 @@ source_directory = ./will_it_work/
 
 test_flags = -Wall -Wextra -Werror
 
+VISUAL := visu-hex
+
 LIB_PRINT := printf/libftprintf.a
 
-all: $(NAME)
+all: $(NAME) $(VISUAL)
 
 $(NAME): $(LIB_PRINT) $(objects) $(lib_objects)
 	gcc $(test_flags) $^ -I ./headers -L./printf -lftprintf -o $(NAME)
@@ -36,7 +38,7 @@ $(source_directory)%.o: %.c $(headers)
 
 .FORCE:
 
-visual: 
+$(VISUAL): 
 	make -C ./visualization
 	cp ./visualization/visu-hex .
 
@@ -44,7 +46,7 @@ del_visual:
 	rm visu-hex
 	make fclean  -C ./visualization
 
-$(LIB_PRINT):.FORCE visual
+$(LIB_PRINT):.FORCE
 	make -C ./printf
 	make -C ./library_routines
 
@@ -55,6 +57,7 @@ clean:
 fclean: clean del_visual
 	make fclean -C ./printf
 	make fclean -C ./library_routines
-	rm -f lem-in
+	rm -f $(NAME)
+	rm -f $(VISUAL)
 
 re: fclean all

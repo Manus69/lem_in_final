@@ -6,7 +6,7 @@
 /*   By: gemerald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 23:03:30 by gemerald          #+#    #+#             */
-/*   Updated: 2020/02/08 20:37:26 by gemerald         ###   ########.fr       */
+/*   Updated: 2020/02/26 18:50:24 by gemerald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int		search_void_string(char *str)
 	int i;
 
 	i = -1;
+	if (!str || str[0] == '\n')
+		return (1);
 	while (str[++i])
 	{
 		if (str[i + 1] && str[i] == '\n' && str[i + 1] == '\n')
@@ -55,6 +57,7 @@ int		lets_read(t_lemin *lemin, char *map)
 	int		fd;
 
 	fd = 0;
+	input = NULL;
 	if (map)
 		fd = open(map, O_RDONLY);
 	if (fd < 0)
