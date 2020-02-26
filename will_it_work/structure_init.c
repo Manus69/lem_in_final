@@ -84,7 +84,7 @@ int			take_rooms(t_lemin *lemin, char **spl)
 	int flag;
 
 	if (!find_borders(lemin, spl))
-		return (1);
+		return (empty_rooms(lemin));
 	if (!(lemin->rooms = (t_room *)malloc(sizeof(t_room) * lemin->rooms_len)))
 		return (lemin->rooms_len = 0);
 	init_var_in_take_rooms(&y, &room, &flag, lemin);

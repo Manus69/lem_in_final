@@ -57,6 +57,7 @@ int			init_lemin(t_lemin *lemin, char **spl)
 {
 	lemin->initial_text = spl;
 	lemin->rooms_len = 0;
+	lemin->empty_rooms = 0;
 	null_pointer_upload(lemin);
 	if (!take_ants(lemin, spl))
 		return (0);

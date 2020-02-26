@@ -30,6 +30,9 @@ int			find_borders(t_lemin *lemin, char **spl)
 	}
 	lemin->rooms_len = rooms_count;
 	lemin->start_links = y;
+	if (lemin->start == y || lemin->end == y ||
+			lemin->start == lemin->end)
+		return (0);
 	return (1);
 }
 
@@ -76,21 +79,8 @@ int			fill_start_end(char **spl, int y, t_lemin *lemin)
 
 	if (spl[y][0] == '#')
 	{
-		if (!ft_strncmp(spl[y], "##start", 7) &&
-				spl[y + 1] && spl[y + 1][0] != '#')
-		{
-			lemin->start = y + 1;
-			start_count++;
-		}
-	}
-	if (spl[y][0] == '#')
-	{
-		if (!ft_strncmp(spl[y], "##end", 5) &&
-				spl[y + 1] && spl[y + 1][0] != '#')
-		{
-			lemin->end = y + 1;
-			end_count++;
-		}
+		start_state(spl, y, &start_count, lemin);
+		end_state(spl, y, &end_count, lemin);
 	}
 	if (start_count > 1 || end_count > 1)
 		return (0);

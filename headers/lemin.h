@@ -6,7 +6,7 @@
 /*   By: gemerald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 15:51:19 by gemerald          #+#    #+#             */
-/*   Updated: 2020/02/16 16:17:28 by gemerald         ###   ########.fr       */
+/*   Updated: 2020/02/25 23:41:40 by gemerald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct				s_lemin
 	t_room					*rooms;
 	t_hash_table			*table_hashes[4096];
 	int						rooms_len;
+	int						empty_rooms;
 	int						start_links;
 	int						start_rooms;
 	int						start;
@@ -100,5 +101,12 @@ int							take_next_start(char *str, int prev_start);
 int							find_borders(t_lemin *lemin, char **spl);
 void						make_free_hash(t_lemin *lemin);
 char						*feel_map_file(int ac, char **av, t_lemin *lemin);
+void						start_state(char **spl, int y, int *start,\
+							t_lemin *lemin);
+void						end_state(char **spl, int y, int *end,\
+							t_lemin *lemin);
+int							empty_rooms(t_lemin *lemin);
+int							loop_in_links(t_room *first_room,\
+							t_room *second_room);
 
 #endif

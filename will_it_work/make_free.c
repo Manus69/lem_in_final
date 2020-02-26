@@ -60,6 +60,9 @@ void		free_for_all(t_lemin *lemin)
 		free(lemin->initial_text[y]);
 	free(lemin->initial_text);
 	free_hash_table(lemin);
-	free_links(lemin);
-	free(lemin->rooms);
+	if (!lemin->empty_rooms)
+	{
+		free_links(lemin);
+		free(lemin->rooms);
+	}
 }

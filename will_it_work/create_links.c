@@ -89,6 +89,8 @@ int			create_link_in_room(t_lemin *lemin, t_hash hash_found)
 	if (!(second_room =\
 		search_in_table(lemin, hash_found.hash_second, hash_found.second_name)))
 		return (0);
+	if (loop_in_links(first_room, second_room))
+		return (0);
 	if (!push_link(&first_room->links, second_room))
 		return (0);
 	if (!push_link(&second_room->links, first_room))

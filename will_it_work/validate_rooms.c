@@ -71,6 +71,8 @@ int		search_duplicates(int **coords)
 	int i;
 
 	i = -1;
+	if (!coords || !coords[0] || !coords[1])
+		return (1);
 	while (coords[++i + 1])
 	{
 		if (coords[i][0] == coords[i + 1][0])
@@ -86,6 +88,7 @@ int		check_coords(t_lemin *lemin)
 {
 	int **coords;
 
+	coords = NULL;
 	if (!fill_coords_pool(lemin, &coords))
 		return (0);
 	sort_coords(&coords);
