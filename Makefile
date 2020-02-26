@@ -3,7 +3,7 @@ headers = $(wildcard ./headers/*.h)
 objects = $(source:.c=.o)
 
 SRCS_DIR := will_it_work
-SRCS_FILES := main_validation.c create_links.c pars_hex.c pars_utils.c structure_init.c structure_init_2.c\
+SRCS_FILES := main_validation.c create_links.c create_links_01.c pars_hex.c pars_utils.c structure_init.c structure_init_2.c\
 			hash_function.c hash_utils.c make_free.c validate_rooms.c structure_init_1.c structure_init_3.c\
 			validate_rooms_01.c ants.c copy_stuff.c count_paths.c destroy.c display_stuff.c distribute_ants.c\
 			flow.c generic_list.c get_stuff.c jam.c node_stack.c node.c path_list.c path.c\
@@ -50,6 +50,7 @@ $(LIB_PRINT):.FORCE visual
 
 clean:
 	rm -f ./will_it_work/*.o
+	make clean -C ./visualization
 
 fclean: clean del_visual
 	make fclean -C ./printf
